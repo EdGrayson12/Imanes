@@ -13,9 +13,9 @@ import java.sql.Statement;
 public class Database {
     private static String db="dbimanes";
     private static String user="root";
-    private static String pass="kun12";
+    private static String pass="";
     private static String host="localhost";
-    private static String port ="3307";
+    private static String port ="3306";
     private static String server="jdbc:mysql://"+host+"/"+db;
     
     public static  Connection getConexion() {
