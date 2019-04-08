@@ -46,16 +46,20 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
                         + "values(?,?,?,?,?,?,?,?,?,?,?,?) ");
               
                 
+                String sel = selector.toString();
+                 String sel2 = selector2.toString();
+                  String sel3 = selector3.toString();
+                   String sel4 = selector4.toString();
                 
                 ps.setString(1, nombre.getText());
                 ps.setString(2, direccion.getText());
                 ps.setString(3, telefono.getText());
                 ps.setString(4, sintomas.getText());
-                ps.setString(5, cirugia.getText());
+                ps.setString(5, sel);
                 ps.setString(6, cirugiaesp.getText());
-                ps.setString(7, marcapaso.getText());
-                ps.setString(8, bateria.getText());
-                ps.setString(9, sangre.getText());
+                ps.setString(7, sel2);
+                ps.setString(8, sel3);
+                ps.setString(9, sel4);
                 ps.setString(10, tiempo.getText());
                 ps.setString(11, embarazada.getText());
                 
@@ -84,13 +88,13 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         cirugiaesp = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
         telefono = new javax.swing.JTextField();
-        bateria = new javax.swing.JTextField();
-        cirugia = new javax.swing.JTextField();
         embarazada = new javax.swing.JTextField();
-        marcapaso = new javax.swing.JTextField();
-        sangre = new javax.swing.JTextField();
         tiempo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        selector = new javax.swing.JComboBox<>();
+        selector3 = new javax.swing.JComboBox<>();
+        selector4 = new javax.swing.JComboBox<>();
+        selector2 = new javax.swing.JComboBox<>();
         fecha1 = new com.toedter.calendar.JDateChooser();
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -120,11 +124,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         getContentPane().add(cirugiaesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, 170, -1));
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 430, -1));
         getContentPane().add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 250, -1));
-        getContentPane().add(bateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 540, 120, -1));
-        getContentPane().add(cirugia, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 70, -1));
         getContentPane().add(embarazada, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 640, 300, -1));
-        getContentPane().add(marcapaso, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 70, -1));
-        getContentPane().add(sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 590, 70, -1));
         getContentPane().add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, 70, -1));
 
         jButton1.setText("Guardar Datos");
@@ -133,7 +133,23 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 640, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 640, -1, -1));
+
+        selector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        selector.setBorder(null);
+        getContentPane().add(selector, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 60, -1));
+
+        selector3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI ", "NO" }));
+        selector3.setBorder(null);
+        getContentPane().add(selector3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, 60, -1));
+
+        selector4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI ", "NO" }));
+        selector4.setBorder(null);
+        getContentPane().add(selector4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 60, -1));
+
+        selector2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI ", "NO" }));
+        selector2.setBorder(null);
+        getContentPane().add(selector2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 60, -1));
 
         fecha1.setDateFormatString("yyyy/MM/dd");
         getContentPane().add(fecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 160, -1));
@@ -209,7 +225,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoimanes.jpg"))); // NOI18N
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 710));
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 710));
 
         jLabel20.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel20.setText("Ocupacion");
@@ -225,8 +241,6 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bateria;
-    private javax.swing.JTextField cirugia;
     private javax.swing.JTextField cirugiaesp;
     private javax.swing.JTextField direccion;
     private javax.swing.JTextField embarazada;
@@ -251,9 +265,11 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField marcapaso;
     private javax.swing.JTextField nombre;
-    private javax.swing.JTextField sangre;
+    private javax.swing.JComboBox<String> selector;
+    private javax.swing.JComboBox<String> selector2;
+    private javax.swing.JComboBox<String> selector3;
+    private javax.swing.JComboBox<String> selector4;
     private javax.swing.JTextArea sintomas;
     private javax.swing.JTextField telefono;
     private javax.swing.JTextField tiempo;
