@@ -88,7 +88,6 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         cirugiaesp = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
         telefono = new javax.swing.JTextField();
-        embarazada = new javax.swing.JTextField();
         tiempo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         selector = new javax.swing.JComboBox<>();
@@ -124,7 +123,6 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         getContentPane().add(cirugiaesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, 170, -1));
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 430, -1));
         getContentPane().add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 250, -1));
-        getContentPane().add(embarazada, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 640, 300, -1));
         getContentPane().add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, 70, -1));
 
         jButton1.setText("Guardar Datos");
@@ -137,6 +135,11 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
 
         selector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
         selector.setBorder(null);
+        selector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectorActionPerformed(evt);
+            }
+        });
         getContentPane().add(selector, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 60, -1));
 
         selector3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI ", "NO" }));
@@ -239,11 +242,17 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
          insertarRegistro();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void selectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorActionPerformed
+        // TODO add your handling code here:
+        String h = selector.toString();
+        System.out.println(""+h);
+        
+    }//GEN-LAST:event_selectorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cirugiaesp;
     private javax.swing.JTextField direccion;
-    private javax.swing.JTextField embarazada;
     private com.toedter.calendar.JDateChooser fecha1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
