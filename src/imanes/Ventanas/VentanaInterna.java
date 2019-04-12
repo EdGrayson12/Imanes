@@ -37,31 +37,42 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     
      public void insertarRegistro() {
          
-
-
-          
+         
+         String registro1;
+            registro1 = selector.getSelectedItem().toString();
+            
+             String registro2;
+            registro2 = selector2.getSelectedItem().toString();
+            
+             String registro3;
+            registro3 = selector3.getSelectedItem().toString();
+            
+             String registro4;
+            registro4 = selector1.getSelectedItem().toString();
+            
+             String registro5;
+            registro5 = selector4.getSelectedItem().toString();
+            
+             
+                
             try {
                 //  Connection con = getConnection();
                 PreparedStatement ps = con.prepareStatement("INSERT INTO usuarios(nombre,direccion,telefono,sintomas,cirugia,cirugiaesp,marcapaso,bateria,sangre,tiempo,embarazada,fecha)"
                         + "values(?,?,?,?,?,?,?,?,?,?,?,?) ");
               
                 
-                String sel = selector.toString();
-                 String sel2 = selector2.toString();
-                  String sel3 = selector3.toString();
-                   String sel4 = selector4.toString();
                 
                 ps.setString(1, nombre.getText());
                 ps.setString(2, direccion.getText());
                 ps.setString(3, telefono.getText());
                 ps.setString(4, sintomas.getText());
-                ps.setString(5, sel);
-                ps.setString(6, cirugiaesp.getText());
-                ps.setString(7, sel2);
-                ps.setString(8, sel3);
-                ps.setString(9, sel4);
-                ps.setString(10, tiempo.getText());
-                ps.setString(11, embarazada.getText());
+                ps.setString(5, registro1);
+                ps.setString(6, cirugiaesp2.getText());
+                ps.setString(7, registro2);
+                ps.setString(8, registro3);
+                ps.setString(9, registro4);
+                ps.setString(10, cirugiaesp1.getText());
+                ps.setString(11, registro5);
                 
                 SimpleDateFormat date = new SimpleDateFormat("yyy-MM-dd");
                 String fecha = date.format(fecha1.getDate());
@@ -69,7 +80,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
                 ps.executeUpdate();
                 // Show_Products_In_JTable();
 
-                JOptionPane.showMessageDialog(null, "Data Inserted");
+                JOptionPane.showMessageDialog(null, "Datos Insertados");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
@@ -85,15 +96,16 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         direccion = new javax.swing.JTextField();
-        cirugiaesp = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
         telefono = new javax.swing.JTextField();
-        tiempo = new javax.swing.JTextField();
+        cirugiaesp1 = new javax.swing.JTextField();
+        cirugiaesp2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         selector = new javax.swing.JComboBox<>();
         selector3 = new javax.swing.JComboBox<>();
-        selector4 = new javax.swing.JComboBox<>();
         selector2 = new javax.swing.JComboBox<>();
+        selector1 = new javax.swing.JComboBox<>();
+        selector4 = new javax.swing.JComboBox<>();
         fecha1 = new com.toedter.calendar.JDateChooser();
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -120,10 +132,10 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 430, -1));
-        getContentPane().add(cirugiaesp, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, 170, -1));
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 430, -1));
         getContentPane().add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 250, -1));
-        getContentPane().add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, 70, -1));
+        getContentPane().add(cirugiaesp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, 170, -1));
+        getContentPane().add(cirugiaesp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, 170, -1));
 
         jButton1.setText("Guardar Datos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -140,19 +152,33 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
                 selectorActionPerformed(evt);
             }
         });
-        getContentPane().add(selector, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 60, -1));
+        getContentPane().add(selector, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 60, -1));
 
         selector3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI ", "NO" }));
         selector3.setBorder(null);
         getContentPane().add(selector3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, 60, -1));
 
-        selector4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI ", "NO" }));
-        selector4.setBorder(null);
-        getContentPane().add(selector4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 60, -1));
-
         selector2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI ", "NO" }));
         selector2.setBorder(null);
         getContentPane().add(selector2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 60, -1));
+
+        selector1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        selector1.setBorder(null);
+        selector1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selector1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(selector1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 60, -1));
+
+        selector4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        selector4.setBorder(null);
+        selector4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selector4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(selector4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 640, 60, -1));
 
         fecha1.setDateFormatString("yyyy/MM/dd");
         getContentPane().add(fecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 160, -1));
@@ -174,15 +200,15 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 106, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel5.setText("Sintomas: ");
+        jLabel5.setText("Síntomas");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel6.setText("Escriba el motivo por el cual Usted, desea recibir terapia como tratamientoalternativo  ");
+        jLabel6.setText("Escriba el motivo por el cual Usted desea recibir terapia como tratamiento alternativo  ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 213, 651, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel7.setText("por la Terapeuta Eugenia Gabriela Dominguez Diaz, con el metodo \"Par Biomagnetico ");
+        jLabel7.setText("por la Terapeuta Eugenia Gabriela Domínguez Díaz, con el método Par Biomagnetico");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 242, -1, -1));
 
         sintomas.setColumns(20);
@@ -192,15 +218,15 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 311, 651, 112));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel9.setText("Recibe o recibio tratamiento de quimio y/o radio terapia ");
+        jLabel9.setText("Recibe o recibió tratamiento de quimio y/o radio terapia");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 430, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel10.setText("Mencione cuando fue la ultima vez ");
+        jLabel10.setText("Mencione cuando fue la última vez");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 459, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel11.setText("¿A Ud. le han practicado alguna cirugia? ");
+        jLabel11.setText("¿A Ud. le han practicado alguna cirugía? ");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 488, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -216,7 +242,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(269, 541, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel15.setText("Le han transfundido sangre (donado) ");
+        jLabel15.setText("¿Le han transfundido sangre (donado)? ");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 591, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -224,7 +250,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 639, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel17.setText("¿Cuanto tiempo hace?");
+        jLabel17.setText("¿Cuánto tiempo hace? ");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoimanes.jpg"))); // NOI18N
@@ -239,19 +265,46 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         insertarRegistro();
+  
+        
+       insertarRegistro();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void selectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorActionPerformed
-        // TODO add your handling code here:
-        String h = selector.toString();
-        System.out.println(""+h);
         
+         String registro1;
+            registro1 = selector.getSelectedItem().toString();
+        
+        if ("SI".equals(registro1)) {
+            cirugiaesp1.setEnabled(true);
+        }else{
+            cirugiaesp1.setEnabled(false);
+        
+        }
     }//GEN-LAST:event_selectorActionPerformed
+
+    private void selector1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selector1ActionPerformed
+      String registro1;
+            registro1 = selector1.getSelectedItem().toString();
+        
+        if ("SI".equals(registro1)) {
+            cirugiaesp2.setEnabled(true);
+        }else{
+            cirugiaesp2.setEnabled(false);
+        
+        }
+        
+        
+    }//GEN-LAST:event_selector1ActionPerformed
+
+    private void selector4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selector4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selector4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cirugiaesp;
+    private javax.swing.JTextField cirugiaesp1;
+    private javax.swing.JTextField cirugiaesp2;
     private javax.swing.JTextField direccion;
     private com.toedter.calendar.JDateChooser fecha1;
     private javax.swing.JButton jButton1;
@@ -276,11 +329,11 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombre;
     private javax.swing.JComboBox<String> selector;
+    private javax.swing.JComboBox<String> selector1;
     private javax.swing.JComboBox<String> selector2;
     private javax.swing.JComboBox<String> selector3;
     private javax.swing.JComboBox<String> selector4;
     private javax.swing.JTextArea sintomas;
     private javax.swing.JTextField telefono;
-    private javax.swing.JTextField tiempo;
     // End of variables declaration//GEN-END:variables
 }
