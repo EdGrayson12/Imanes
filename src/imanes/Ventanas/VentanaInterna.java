@@ -132,7 +132,19 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 430, -1));
+
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 430, -1));
+
+        telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                telefonoKeyTyped(evt);
+            }
+        });
         getContentPane().add(telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 250, -1));
         getContentPane().add(cirugiaesp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, 170, -1));
         getContentPane().add(cirugiaesp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, 170, -1));
@@ -300,6 +312,21 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     private void selector4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selector4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selector4ActionPerformed
+
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+    char c= evt.getKeyChar();
+    
+        if ((c< 'a' ||  c>'z') && (c< 'A' ||  c>'Z')) evt.consume();
+        
+    }//GEN-LAST:event_nombreKeyTyped
+
+    private void telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyTyped
+        // TODO add your handling code here:
+        
+        char c= evt.getKeyChar();
+    
+        if (c< '0' ||  c>'9' ) evt.consume();
+    }//GEN-LAST:event_telefonoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
